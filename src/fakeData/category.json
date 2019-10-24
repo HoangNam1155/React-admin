@@ -1,0 +1,33 @@
+[
+    {
+        "type_id": 1,
+        "type": "Iphone"
+        
+    },
+    {
+        "type_id": 2,
+        "type": "Samsung"
+        
+    },
+    {
+        "type_id": 3,
+        "type": "Xiaomi"
+        
+    },
+    {
+        "type_id": 4,
+        "type": "Oppo"
+        
+    },
+    {
+        "type_id": 5,
+        "type": "Huawei"
+        
+    },
+    {
+        "type_id": 6,
+        "type": "Nokia"
+        
+    }
+
+]
