@@ -37,9 +37,9 @@ import fakeDataProvider from 'ra-data-fakerest';
 import authProvider from './components/authProvider';
 // import components
 import {PhoneList,PhoneEdit,PhoneCreate } from './components/Phones';
-import {CategoryList,CategoryEdit,CategoryCreate} from './components/Category';
-import {UserList,UserEdit,UserCreate} from './components/Users';
-import {CustomerList,CustomerEdit,CustomerCreate} from './components/Customer';
+// import {CategoryList,CategoryEdit,CategoryCreate} from './components/Category';
+// import {UserList,UserEdit,UserCreate} from './components/Users';
+// import {CustomerList,CustomerEdit,CustomerCreate} from './components/Customer';
 import DashBoard from './components/Dashboard';
 // import fakedata
 import phones from './fakeData/phone.json';
@@ -49,22 +49,22 @@ import customer from './fakeData/customer.json';
 // import icon from material
 import PhoneIcon from '@material-ui/icons/Smartphone';
 import UserIcon from '@material-ui/icons/People';
+import dataProvider from './dataprovider/dataprovider';
 
 
 
 
+// const dataProvider = fakeDataProvider({
+//     phones,category,user,customer
 
-const dataProvider = fakeDataProvider({
-    phones,category,user,customer
-
-})
+// })
 
 const App = () => (
     <Admin dashboard={DashBoard} dataProvider={dataProvider} authProvider={authProvider}>
         <Resource name="phones" list={PhoneList} edit={PhoneEdit} create={PhoneCreate} icon={PhoneIcon}/>
-        <Resource name="category" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} />
+        {/* <Resource name="category" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} />
         <Resource name="user" list={UserList} edit={UserEdit} create={UserCreate}  icon={UserIcon}/>
-        <Resource name="customer" list={CustomerList} edit={CustomerEdit} create={CustomerCreate} />
+        <Resource name="customer" list={CustomerList} edit={CustomerEdit} create={CustomerCreate} /> */}
     </Admin>
 );
 
