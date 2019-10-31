@@ -3,13 +3,13 @@ import { GET_LIST, CREATE, UPDATE, GET_ONE, DELETE, GET_MANY, GET_MANY_REFERENCE
 import API from '../apiService';
 const service = new API();
 
-const brandProvider = (type, params) => {
+const SaleProvider = (type, params) => {
     switch (type) {
         //get all
         case GET_LIST: {
-            return service.post('getBrands', params).then((response) => {
+            return service.post('getSales', params).then((response) => {
                 console.log(response)
-                const data = response.data.brand
+                const data = response.data.sale
                 data.forEach(element => {
                     element.id = element._id
                 });
@@ -24,7 +24,7 @@ const brandProvider = (type, params) => {
         }
         // get one
         case GET_ONE: {
-            return service.post(`getBrand/${params.id}`).then((response) => {
+            return service.post(`getSale/${params.id}`).then((response) => {
                 console.log(response)
                 const data = response.data.result
                 data.id = data._id
@@ -38,7 +38,7 @@ const brandProvider = (type, params) => {
 
         //update
         case UPDATE: {
-            return service.post(`updateBrand/${params.id}`, params).then((response) => {
+            return service.post(`updateSale/${params.id}`, params).then((response) => {
                 console.log(response)
                 const data = response.data.body.result
                 data.id = data._id
@@ -50,7 +50,7 @@ const brandProvider = (type, params) => {
 
         //create
         case CREATE: {
-            return service.post('createBrand', params.data).then((response) => {
+            return service.post('createSale', params.data).then((response) => {
                 //console.log(response)
                 const data = response.data.result
                 data.id = data._id
@@ -65,7 +65,7 @@ const brandProvider = (type, params) => {
 
         //delete
         case DELETE: {
-            return service.post(`deleteBrand/${params.id}`).then((response) => {
+            return service.post(`deleteSale/${params.id}`).then((response) => {
                 const data = (response, 'data', {});
                 data.id = data._id
                 if (data.message) {
@@ -78,4 +78,4 @@ const brandProvider = (type, params) => {
         }
     }
 }
-export default brandProvider
+export default SaleProvider

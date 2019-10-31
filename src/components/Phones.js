@@ -1,5 +1,5 @@
 import React from 'react';
-import {Filter, List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create,SelectInput,BooleanField,BooleanInput,ImageField } from 'react-admin';
+import { Filter, List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create, SelectInput, BooleanField, BooleanInput, ImageField } from 'react-admin';
 const PhoneTitle = ({ record }) => {
     return <span>{record ? `"${record.name_phone}"` : ''}</span>;
 };
@@ -24,7 +24,16 @@ export const PhoneEdit = props => (
             <DisabledInput source="id" />
             <TextInput source="name_phone" />
             <TextInput source="price" />
-            <TextInput source="brand" />
+            <SelectInput source="brand" choices={[
+                { id: 'Iphone', name: 'Iphone' },
+                { id: 'Samsung', name: 'Samsung' },
+                { id: 'Oppo', name: 'Oppo' },
+                { id: 'Xiaomi', name: 'Xiaomi' },
+                { id: 'Vivo', name: 'Vivo' },
+                { id: 'Realme', name: 'Realme' },
+                { id: 'Huawei', name: 'Huawei' },
+                { id: 'Nokia', name: 'Nokia' },
+            ]} />
             <TextInput source="sale" />
             <TextInput source="description" />
             <TextInput source="img" />
@@ -38,7 +47,16 @@ export const PhoneCreate = props => (
         <SimpleForm>
             <TextInput source="name_phone" />
             <TextInput source="price" />
-            <TextInput source="brand" />
+            <SelectInput source="brand" choices={[
+                { id: 'Iphone', name: 'Iphone' },
+                { id: 'Samsung', name: 'Samsung' },
+                { id: 'Oppo', name: 'Oppo' },
+                { id: 'Xiaomi', name: 'Xiaomi' },
+                { id: 'Vivo', name: 'Vivo' },
+                { id: 'Realme', name: 'Realme' },
+                { id: 'Huawei', name: 'Huawei' },
+                { id: 'Nokia', name: 'Nokia' },
+            ]} />
             <TextInput source="sale" />
             <TextInput source="description" />
             <TextInput source="img" />

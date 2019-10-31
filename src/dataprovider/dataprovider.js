@@ -1,13 +1,16 @@
 import phoneProvider from './phoneProvider';
-import brandProvider from './brandProvider';
+import customerProvider from './customerProvider';
+import saleProvider from './saleProvider';
 export default (type, resource, params) => {
     console.log(resource)
     switch (resource) {
-        case 'phones':
+        case 'Phones':
             return phoneProvider(type, params)
-        case 'brands':
-            return brandProvider(type, params)
-            default:
+        case 'Customers':
+            return customerProvider(type, params)
+        case 'Sales':
+            return saleProvider(type, params)
+        default:
             break;
     }
 };
