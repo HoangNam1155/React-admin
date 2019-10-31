@@ -3,10 +3,15 @@ import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from 'react-admin';
 export default (type, params) => {
     // called when the user attempts to log in
     if (type === AUTH_LOGIN) {
-        const { username } = params;
-        localStorage.setItem('username', username);
-        // accept all username/password combinations
-        return Promise.resolve();
+        const { username ,password} = params;
+        if(username==="admin" && password==="admin")
+        {
+            localStorage.setItem('username', username);
+            // accept all username/password combinations
+            return Promise.resolve();
+        }
+        throw new Error("username or password incorrect !");
+        
     }
     // called when the user clicks on the logout button
     if (type === AUTH_LOGOUT) {

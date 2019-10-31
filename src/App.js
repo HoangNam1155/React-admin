@@ -10,9 +10,6 @@ import authProvider from './components/authProvider';
 // import components
 import { PhoneList, PhoneEdit, PhoneCreate } from './components/Phones';
 import { BrandList, BrandEdit, BrandCreate } from './components/Brands';
-// import {CategoryList,CategoryEdit,CategoryCreate} from './components/Category';
-// import {UserList,UserEdit,UserCreate} from './components/Users';
-// import {CustomerList,CustomerEdit,CustomerCreate} from './components/Customer';
 import DashBoard from './components/Dashboard';
 // import fakedata
 import phones from './fakeData/phone.json';
@@ -25,20 +22,10 @@ import UserIcon from '@material-ui/icons/People';
 import dataProvider from './dataprovider/dataprovider';
 
 
-
-
-// const dataProvider = fakeDataProvider({
-//     phones,category,user,customer
-
-// })
-
 const App = () => (
     <Admin dashboard={DashBoard} dataProvider={dataProvider} authProvider={authProvider}>
         <Resource name="phones" list={PhoneList} edit={PhoneEdit} create={PhoneCreate} icon={PhoneIcon} />
         <Resource name="brands" list={BrandList} edit={BrandEdit} create={BrandCreate} />
-        {/* <Resource name="category" list={CategoryList} edit={CategoryEdit} create={CategoryCreate} />
-        <Resource name="user" list={UserList} edit={UserEdit} create={UserCreate}  icon={UserIcon}/>
-        <Resource name="customer" list={CustomerList} edit={CustomerEdit} create={CustomerCreate} /> */}
     </Admin>
 );
 
