@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create } from 'react-admin';
+import { List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create,ReferenceField } from 'react-admin';
 const CustomerTitle = ({ record }) => {
     return <span>{record ? `"${record.name_customer}"` : ''}</span>;
 };

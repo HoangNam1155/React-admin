@@ -36,6 +36,24 @@ const SaleProvider = (type, params) => {
             });
         }
 
+        //get many
+        case GET_MANY:{
+            return service.post('getSaleFromArray',params).then((response) => {
+                console.log(response)
+                const data = response.data.data
+                data.forEach(element => {
+                    element.id = element._id
+                });
+                if(data.message){
+                    throw new Error(data.message)
+                }
+                // const data = _.get(response.data, 'responses',{});
+                return Promise.resolve({data:data})
+            }).catch((err) => {
+                return Promise.resolve({data:{err,id:-1}})
+            });
+        }
+
         //update
         case UPDATE: {
             return service.post(`updateSale/${params.id}`, params).then((response) => {

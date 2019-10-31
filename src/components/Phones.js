@@ -1,5 +1,5 @@
 import React from 'react';
-import { Filter, List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create, SelectInput, BooleanField, BooleanInput, ImageField } from 'react-admin';
+import { Filter, List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create, SelectInput, BooleanField, BooleanInput, ImageField, ReferenceField, ReferenceInput } from 'react-admin';
 const PhoneTitle = ({ record }) => {
     return <span>{record ? `"${record.name_phone}"` : ''}</span>;
 };
@@ -9,7 +9,9 @@ export const PhoneList = props => (
             <TextField source="name_phone" />
             <TextField source="price" />
             <TextField source="brand" />
-            <TextField source="sale" />
+            <ReferenceField label="Sale" source="sale" reference="Sales">
+                <TextField source="name_sale" />
+            </ReferenceField>
             <ImageField source="img" title="title" />
             <TextField source="description" />
             <BooleanField source="is_sale" />
@@ -34,7 +36,9 @@ export const PhoneEdit = props => (
                 { id: 'Huawei', name: 'Huawei' },
                 { id: 'Nokia', name: 'Nokia' },
             ]} />
-            <TextInput source="sale" />
+            <ReferenceInput label="Sale" source="sale" reference="Sales">
+                <SelectInput optionText="name_sale" />
+            </ReferenceInput>
             <TextInput source="description" />
             <TextInput source="img" />
             <BooleanInput label="Is_Sale" source="is_sale" />
@@ -57,7 +61,10 @@ export const PhoneCreate = props => (
                 { id: 'Huawei', name: 'Huawei' },
                 { id: 'Nokia', name: 'Nokia' },
             ]} />
-            <TextInput source="sale" />
+            {/* <TextInput source="sale" /> */}
+            <ReferenceInput label="Sale" source="sale" reference="Sales">
+                <SelectInput optionText="name_sale" />
+            </ReferenceInput>
             <TextInput source="description" />
             <TextInput source="img" />
             <BooleanInput label="Is_Sale" source="is_sale" />

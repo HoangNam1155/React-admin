@@ -3,12 +3,13 @@ import { GET_LIST, CREATE, UPDATE, GET_ONE, DELETE, GET_MANY, GET_MANY_REFERENCE
 import API from '../apiService';
 const service = new API();
 
-const phoneProvider = (type, params) => {
+const OrderedProvider = (type, params) => {
     switch (type) {
         //get all
         case GET_LIST: {
-            return service.post('getPhones', params).then((response) => {
-                const data = response.data.phone
+            return service.post('getOrdereds', params).then((response) => {
+                console.log(response)
+                const data = response.data.ordered
                 data.forEach(element => {
                     element.id = element._id
                 });
@@ -16,7 +17,6 @@ const phoneProvider = (type, params) => {
                 return Promise.resolve({
                     data,
                     total: response.data.count
-
                 })
             }).catch((err) => {
                 throw new Error(err);
@@ -24,19 +24,21 @@ const phoneProvider = (type, params) => {
         }
         // get one
         case GET_ONE: {
-            return service.post(`getPhone/${params.id}`).then((response) => {
-                //console.log(response)
+            return service.post(`getOrdered/${params.id}`).then((response) => {
+                console.log(response)
                 const data = response.data.result
                 data.id = data._id
                 //console.log(data)
                 return Promise.resolve({ data: data })
+
             }).catch((err) => {
                 return Promise.resolve({ data: { err, id: -1 } })
             });
         }
+
         //get many
         case GET_MANY:{
-            return service.post('getSaleFromArray',params).then((response) => {
+            return service.post('getOrderFromArray',params).then((response) => {
                 console.log(response)
                 const data = response.data.data
                 data.forEach(element => {
@@ -54,7 +56,7 @@ const phoneProvider = (type, params) => {
 
         //update
         case UPDATE: {
-            return service.post(`updatePhone/${params.id}`, params).then((response) => {
+            return service.post(`updateOrdered/${params.id}`, params).then((response) => {
                 console.log(response)
                 const data = response.data.body.result
                 data.id = data._id
@@ -63,9 +65,10 @@ const phoneProvider = (type, params) => {
                 return Promise.resolve({ data: { err, id: -1 } })
             });
         }
+
         //create
         case CREATE: {
-            return service.post('createPhone', params.data).then((response) => {
+            return service.post('createOrdered', params.data).then((response) => {
                 //console.log(response)
                 const data = response.data.result
                 data.id = data._id
@@ -73,13 +76,12 @@ const phoneProvider = (type, params) => {
                     throw new Error(data.message)
                 }
                 return Promise.resolve({ data: data })
-            }).catch((err) => {
-                return Promise.resolve({ data: { err, id: -1 } })
-            });
+            })
         }
+
         //delete
         case DELETE: {
-            return service.post(`deletePhone/${params.id}`).then((response) => {
+            return service.post(`deleteOrdered/${params.id}`).then((response) => {
                 const data = (response, 'data', {});
                 data.id = data._id
                 if (data.message) {
@@ -92,4 +94,4 @@ const phoneProvider = (type, params) => {
         }
     }
 }
-export default phoneProvider
+export default OrderedProvider
