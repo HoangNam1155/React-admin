@@ -2,7 +2,6 @@ import { GET_LIST, CREATE, UPDATE, GET_ONE, DELETE, GET_MANY, GET_MANY_REFERENCE
 //import _ from 'lodash';
 import API from '../apiService';
 const service = new API();
-
 const CustomerProvider = (type, params) => {
     switch (type) {
         //get all
@@ -35,7 +34,6 @@ const CustomerProvider = (type, params) => {
                 return Promise.resolve({ data: { err, id: -1 } })
             });
         }
-
         //get many
         case GET_MANY:{
             return service.post('getCustomerFromArray',params).then((response) => {
@@ -53,7 +51,6 @@ const CustomerProvider = (type, params) => {
                 return Promise.resolve({data:{err,id:-1}})
             });
         }
-
         //update
         case UPDATE: {
             return service.post(`updateCustomer/${params.id}`, params).then((response) => {
@@ -65,7 +62,6 @@ const CustomerProvider = (type, params) => {
                 return Promise.resolve({ data: { err, id: -1 } })
             });
         }
-
         //create
         case CREATE: {
             return service.post('createCustomer', params.data).then((response) => {
@@ -80,7 +76,6 @@ const CustomerProvider = (type, params) => {
                 return Promise.resolve({ data: { err, id: -1 } })
             });
         }
-
         //delete
         case DELETE: {
             return service.post(`deleteCustomer/${params.id}`).then((response) => {

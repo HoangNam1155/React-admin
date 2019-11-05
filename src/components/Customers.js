@@ -13,7 +13,6 @@ export const CustomerList = props => (
         </Datagrid>
     </List>
 );
-
 export const CustomerEdit = props => (
     <Edit title={<CustomerTitle />} {...props}>
         <SimpleForm>
@@ -24,8 +23,6 @@ export const CustomerEdit = props => (
         </SimpleForm>
     </Edit>
 );
-
-
 export const CustomerCreate = props => (
     <Create {...props}>
         <SimpleForm>

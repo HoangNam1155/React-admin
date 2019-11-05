@@ -9,7 +9,7 @@ import authProvider from './dataprovider/authProvider';
 import { PhoneList, PhoneEdit, PhoneCreate } from './components/Phones';
 import { CustomerList, CustomerEdit, CustomerCreate } from './components/Customers';
 import { SaleList, SaleEdit, SaleCreate } from './components/Sales';
-import { OrderedList, OrderedEdit, OrderedCreate } from './components/Ordered';
+import { BillList, BillEdit, BillCreate } from './components/Bill';
 import DashBoard from './components/Dashboard';
 // import icon from material
 import PhoneIcon from '@material-ui/icons/Smartphone';
@@ -22,7 +22,7 @@ const App = () => (
         <Resource name="Phones" list={PhoneList} edit={PhoneEdit} create={PhoneCreate} icon={PhoneIcon} />
         <Resource name="Customers" list={CustomerList} edit={CustomerEdit} create={CustomerCreate} icon={UserIcon} />
         <Resource name="Sales" list={SaleList} edit={SaleEdit} create={SaleCreate} />
-        <Resource name="Ordered" list={OrderedList} edit={OrderedEdit} create={OrderedCreate} />
+        <Resource name="Bill" list={BillList} edit={BillEdit} create={BillCreate} />
     </Admin>
 );
 

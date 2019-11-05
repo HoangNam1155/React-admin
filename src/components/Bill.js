@@ -1,15 +1,15 @@
 import React from 'react';
-import { List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create, DateInput,ReferenceField, ReferenceInput, SelectInput } from 'react-admin';
-const OrderedTitle = ({ record }) => {
+import { List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create, DateInput,ReferenceField, ReferenceInput, SelectInput,DateField } from 'react-admin';
+const BillTitle = ({ record }) => {
     return <span>{record ? `"${record.date}"` : ''}</span>;
 };
-export const OrderedList = props => (
+export const BillList = props => (
     <List {...props} sort={{ order: 'DESC' }}>
         <Datagrid >
             <ReferenceField label="Customer" source="customer" reference="Customers">
                 <TextField source="name_customer" />
             </ReferenceField>
-            <TextField source="date" />
+            <DateField source="date" />
             <TextField source="price" />
             <TextField source="quantity" />
             <TextField source="total" />
@@ -17,8 +17,8 @@ export const OrderedList = props => (
         </Datagrid>
     </List>
 );
-export const OrderedEdit = props => (
-    <Edit title={<OrderedTitle />} {...props}>
+export const BillEdit = props => (
+    <Edit title={<BillTitle />} {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
             <ReferenceInput label="Customer" source="customer" reference="Customers">
@@ -30,7 +30,7 @@ export const OrderedEdit = props => (
         </SimpleForm>
     </Edit>
 );
-export const OrderedCreate = props => (
+export const BillCreate = props => (
     <Create {...props}>
         <SimpleForm>
             <DisabledInput source="id" />
