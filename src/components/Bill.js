@@ -4,7 +4,9 @@ export const BillList = props => (
     <List {...props} sort={{ order: 'DESC' }}>
         <Datagrid rowClick="show">
             <DateField source="date"/>
-            <TextField source="address"/>
+            <TextField source="customer.name_customer"/>
+            <TextField source="customer.phone_customer"/>
+            <TextField source="customer.address_customer"/>
             <TextField source="deliveryState"/>
         </Datagrid>
     </List>
@@ -25,7 +27,9 @@ const ViewBill = props => (
         <Tab label="Summary">
         <TextField source="id" />
         <DateField source="date" />
-        <TextField source="address" />
+        <TextField source="customer.name_customer"/>
+        <TextField source="customer.phone_customer"/>
+        <TextField source="customer.address_customer"/>
         <TextField source="deliveryState" />
         </Tab>
         <Tab label="BillDetail">
