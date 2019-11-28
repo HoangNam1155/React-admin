@@ -36,24 +36,4 @@ export default class API {
         }
       });
   }
-  // get(action,params){
-      
-  //   return this.axios
-  //   .request(action, {
-  //     method: 'get',
-  //     body: params
-  //   })
-  //   .then(response=>{
-  //       return {
-  //           data: response.data
-  //         };
-  //       })
-  //       .catch(error => {
-  //       if (error.response && error.response.data) {
-  //         throw error.response.data;
-  //       } else {
-  //         throw error;
-  //       }
-  //     });
-  // }
 }

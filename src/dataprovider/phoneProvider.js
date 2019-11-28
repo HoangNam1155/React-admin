@@ -9,17 +9,18 @@ const phoneProvider = (type, params) => {
         case GET_LIST: {
             return service.post('getPhones', params).then((response) => {
                 const data = response.data.phone
+                const total = response.data.count
                 data.forEach(element => {
                     element.id = element._id
                 });
-                //console.log(data)
+                console.log(data)
+                console.log(total)
                 return Promise.resolve({
                     data,
-                    total: response.data.count
-
+                    total
                 })
             }).catch((err) => {
-                throw new Error(err);
+                console.log(err);
             });
         }
         // get one
@@ -31,24 +32,23 @@ const phoneProvider = (type, params) => {
                 //console.log(data)
                 return Promise.resolve({ data: data })
             }).catch((err) => {
-                return Promise.resolve({ data: { err, id: -1 } })
+                console.log(err);
             });
         }
         //get many
-        case GET_MANY:{
-            return service.post('getSaleFromArray',params).then((response) => {
+        case GET_MANY: {
+            return service.post('getSaleFromArray', params).then((response) => {
                 console.log(response)
                 const data = response.data.data
                 data.forEach(element => {
                     element.id = element._id
                 });
-                if(data.message){
+                if (data.message) {
                     throw new Error(data.message)
                 }
-                // const data = _.get(response.data, 'responses',{});
-                return Promise.resolve({data:data})
+                return Promise.resolve({ data: data })
             }).catch((err) => {
-                return Promise.resolve({data:{err,id:-1}})
+                console.log(err);
             });
         }
 
@@ -60,7 +60,7 @@ const phoneProvider = (type, params) => {
                 data.id = data._id
                 return Promise.resolve({ data: data })
             }).catch((err) => {
-                return Promise.resolve({ data: { err, id: -1 } })
+                console.log(err);
             });
         }
         //create
@@ -74,7 +74,7 @@ const phoneProvider = (type, params) => {
                 }
                 return Promise.resolve({ data: data })
             }).catch((err) => {
-                return Promise.resolve({ data: { err, id: -1 } })
+                console.log(err);
             });
         }
         //delete
@@ -87,7 +87,7 @@ const phoneProvider = (type, params) => {
                 }
                 return Promise.resolve({ data: data })
             }).catch((err) => {
-                return Promise.resolve({ data: { err, id: -1 } })
+                console.log(err);
             });
         }
     }

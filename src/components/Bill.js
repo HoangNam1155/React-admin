@@ -1,45 +1,47 @@
 import React from 'react';
-import { List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create, DateInput,ReferenceField, ReferenceInput, SelectInput,DateField } from 'react-admin';
-const BillTitle = ({ record }) => {
-    return <span>{record ? `"${record.date}"` : ''}</span>;
-};
+import { List, Datagrid, TextField, EditButton, Edit, SimpleForm, DisabledInput, TextInput, Create, DateInput,ReferenceField, ReferenceInput, SelectInput,DateField,ReferenceArrayField,Show,Tab,ImageField,ShowButton,DeleteButton,TabbedShowLayout } from 'react-admin';
 export const BillList = props => (
     <List {...props} sort={{ order: 'DESC' }}>
-        <Datagrid >
-            <ReferenceField label="Customer" source="customer" reference="Customers">
-                <TextField source="name_customer" />
-            </ReferenceField>
-            <DateField source="date" />
-            <TextField source="price" />
-            <TextField source="quantity" />
-            <TextField source="total" />
-            <EditButton />
+        <Datagrid rowClick="show">
+            <DateField source="date"/>
+            <TextField source="address"/>
+            <TextField source="deliveryState"/>
         </Datagrid>
     </List>
 );
-export const BillEdit = props => (
-    <Edit title={<BillTitle />} {...props}>
-        <SimpleForm>
-            <DisabledInput source="id" />
-            <ReferenceInput label="Customer" source="customer" reference="Customers">
-                <SelectInput optionText="name_customer" />
-            </ReferenceInput>
-            <DateInput source="date" />
-            <TextInput source="price" />
-            <TextInput source="quantity" />
-        </SimpleForm>
-    </Edit>
-);
 export const BillCreate = props => (
     <Create {...props}>
-        <SimpleForm>
+        <SimpleForm  redirect='Bill'>
             <DisabledInput source="id" />
-            <ReferenceInput label="Customer" source="customer" reference="Customers">
-                <SelectInput optionText="name_customer" />
-            </ReferenceInput>
-            <DateInput source="date" />
-            <TextInput source="price" />
-            <TextInput source="quantity" />
+            <DateInput source="date"/>
+            <TextInput source="address"/>    
         </SimpleForm>
     </Create>
 );
+
+const ViewBill = props => (
+    <Show title="Bill Detail" {...props}>
+      <TabbedShowLayout>
+        <Tab label="Summary">
+        <TextField source="id" />
+        <DateField source="date" />
+        <TextField source="address" />
+        <TextField source="deliveryState" />
+        </Tab>
+        <Tab label="BillDetail">
+          <ReferenceArrayField source='billDetail' reference="billDetails">
+            <Datagrid>
+              <TextField source="phone._id" />
+              <TextField source="phone.name_phone" />
+              <ImageField source="phone.img"/>
+              <TextField source="price" />
+              <TextField source="quantity"/>
+              <ShowButton/>
+              <DeleteButton/>
+            </Datagrid>
+          </ReferenceArrayField>
+        </Tab>
+      </TabbedShowLayout>
+    </Show>
+  );
+export default ViewBill;

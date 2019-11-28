@@ -2,6 +2,7 @@ import phoneProvider from './phoneProvider';
 import customerProvider from './customerProvider';
 import saleProvider from './saleProvider';
 import billProvider from './billProvider';
+import billDetailProvider from './billDetailProvider';
 export default (type, resource, params) => {
     console.log(resource)
     switch (resource) {
@@ -13,6 +14,8 @@ export default (type, resource, params) => {
             return saleProvider(type, params)
         case 'Bill':
             return billProvider(type, params)
+        case 'billDetails':
+            return billDetailProvider(type, params)   
         default:
             break;
     }

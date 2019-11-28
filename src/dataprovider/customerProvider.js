@@ -45,7 +45,6 @@ const CustomerProvider = (type, params) => {
                 if(data.message){
                     throw new Error(data.message)
                 }
-                // const data = _.get(response.data, 'responses',{});
                 return Promise.resolve({data:data})
             }).catch((err) => {
                 return Promise.resolve({data:{err,id:-1}})

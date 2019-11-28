@@ -9,7 +9,7 @@ const BillProvider = (type, params) => {
         case GET_LIST: {
             return service.post('getBills', params).then((response) => {
                 console.log(response)
-                const data = response.data.Bill
+                const data = response.data.bill
                 data.forEach(element => {
                     element.id = element._id
                 });
@@ -24,9 +24,10 @@ const BillProvider = (type, params) => {
         }
         // get one
         case GET_ONE: {
-            return service.post(`getBill/${params.id}`).then((response) => {
+            console.log(params)
+            return service.post('getBill',params).then((response) => {
                 console.log(response)
-                const data = response.data.result
+                const data = response.data.data
                 data.id = data._id
                 //console.log(data)
                 return Promise.resolve({ data: data })
@@ -54,18 +55,6 @@ const BillProvider = (type, params) => {
             });
         }
 
-        //update
-        case UPDATE: {
-            return service.post(`updateBill/${params.id}`, params).then((response) => {
-                console.log(response)
-                const data = response.data.body.result
-                data.id = data._id
-                return Promise.resolve({ data: data })
-            }).catch((err) => {
-                return Promise.resolve({ data: { err, id: -1 } })
-            });
-        }
-
         //create
         case CREATE: {
             return service.post('createBill', params.data).then((response) => {
@@ -77,19 +66,8 @@ const BillProvider = (type, params) => {
                 }
                 return Promise.resolve({ data: data })
             })
-        }
-
-        //delete
-        case DELETE: {
-            return service.post(`deleteBill/${params.id}`).then((response) => {
-                const data = (response, 'data', {});
-                data.id = data._id
-                if (data.message) {
-                    throw new Error(data.message)
-                }
-                return Promise.resolve({ data: data })
-            }).catch((err) => {
-                return Promise.resolve({ data: { err, id: -1 } })
+            .catch((err) => {
+                return Promise.resolve({data:{err,id:-1}})
             });
         }
     }
