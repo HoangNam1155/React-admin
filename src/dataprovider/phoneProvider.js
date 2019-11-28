@@ -12,7 +12,7 @@ const phoneProvider = (type, params) => {
                 data.forEach(element => {
                     element.id = element._id
                 });
-                //console.log(data)
+                console.log(data)
                 return Promise.resolve({
                     data,
                     total: response.data.count
@@ -74,7 +74,7 @@ const phoneProvider = (type, params) => {
                 }
                 return Promise.resolve({ data: data })
             }).catch((err) => {
-                return Promise.resolve({ data: { err, id: -1 } })
+                return err;
             });
         }
         //delete

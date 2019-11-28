@@ -9,7 +9,7 @@ export const PhoneList = props => (
             <TextField source="name_phone" />
             <TextField source="price" />
             <TextField source="brand" />
-            <ReferenceField label="Sale" source="sale" reference="Sales">
+            <ReferenceField label="Sale" source="sale._id" reference="Sales">
                 <TextField source="name_sale" />
             </ReferenceField>
             <ImageField source="img" title="title" />
@@ -36,7 +36,7 @@ export const PhoneEdit = props => (
                 { id: 'Huawei', name: 'Huawei' },
                 { id: 'Nokia', name: 'Nokia' },
             ]} />
-            <ReferenceInput label="Sale" source="sale" reference="Sales">
+            <ReferenceInput label="Sale" source="sale._id" reference="Sales">
                 <SelectInput optionText="name_sale" />
             </ReferenceInput>
             <TextInput source="description" />
@@ -62,7 +62,7 @@ export const PhoneCreate = props => (
                 { id: 'Nokia', name: 'Nokia' },
             ]} />
             {/* <TextInput source="sale" /> */}
-            <ReferenceInput label="Sale" source="sale" reference="Sales">
+            <ReferenceInput label="Sale" source="sale._id" reference="Sales">
                 <SelectInput optionText="name_sale" />
             </ReferenceInput>
             <TextInput source="description" />
