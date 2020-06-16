@@ -56,7 +56,7 @@ const phoneProvider = (type, params) => {
         case UPDATE: {
             return service.post(`updatePhone/${params.id}`, params).then((response) => {
                 console.log(response)
-                const data = response.data.body.result
+                const data = response.data.result
                 data.id = data._id
                 return Promise.resolve({ data: data })
             }).catch((err) => {
