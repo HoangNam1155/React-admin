@@ -11,15 +11,15 @@ export const BillList = props => (
         </Datagrid>
     </List>
 );
-export const BillCreate = props => (
-    <Create {...props}>
-        <SimpleForm  redirect='Bill'>
-            <DisabledInput source="id" />
-            <DateInput source="date"/>
-            <TextInput source="address"/>    
-        </SimpleForm>
-    </Create>
-);
+// export const BillCreate = props => (
+//     <Create {...props}>
+//         <SimpleForm  redirect='Bill'>
+//             <DisabledInput source="id" />
+//             <DateInput source="date"/>
+//             <TextInput source="address"/>    
+//         </SimpleForm>
+//     </Create>
+// );
 
 const ViewBill = props => (
     <Show title="Bill Detail" {...props}>
@@ -40,8 +40,8 @@ const ViewBill = props => (
               <ImageField source="phone.img"/>
               <TextField source="price" />
               <TextField source="quantity"/>
-              <ShowButton/>
-              <DeleteButton/>
+              {/* <ShowButton/>
+              <DeleteButton/> */}
             </Datagrid>
           </ReferenceArrayField>
         </Tab>

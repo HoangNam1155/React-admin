@@ -3,6 +3,8 @@ import { Filter, List, Datagrid, TextField, EditButton, Edit, SimpleForm, Disabl
 const PhoneTitle = ({ record }) => {
     return <span>{record ? `"${record.name_phone}"` : ''}</span>;
 };
+
+
 export const PhoneList = props => (
     <List {...props} >
         <Datagrid >
@@ -71,3 +73,5 @@ export const PhoneCreate = props => (
         </SimpleForm>
     </Create>
 );
+
+
